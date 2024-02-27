@@ -1,0 +1,26 @@
+{
+    "message": "",
+    "result": true,
+    "data": [
+        {
+            "categoryId": 55,
+            "categoryName": "Fruits & Vegetables",
+            "parentCategoryId": 0
+        },
+        {
+            "categoryId": 56,
+            "categoryName": "Foodgrains, Oil & Masala",
+            "parentCategoryId": 0
+        },
+        {
+            "categoryId": 57,
+            "categoryName": "Bakery, Cakes & Dairy",
+            "parentCategoryId": 0
+        },
+        {
+            "categoryId": 58,
+            "categoryName": "Beverages",
+            "parentCategoryId": 0
+        }
+    ]
+}

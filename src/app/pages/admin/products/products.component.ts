@@ -28,14 +28,16 @@ export class ProductsComponent implements OnInit{
     productImageUrl: '',
   };
 
-  constructor(private service: ProductService){}
+  constructor(private service: ProductService){
+
+  }
 
   ngOnInit(): void {
     this.getAllCategory();
   }
 
   getAllCategory(){
-
+    this.service.getCategory();
   }
 
   onSidePanel(){

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './domain/product';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product/product.service';
+import { Category } from '../categories/domain/category';
 
 @Component({
   selector: 'app-products',
@@ -28,16 +29,20 @@ export class ProductsComponent implements OnInit{
     productImageUrl: '',
   };
 
+  categoryList: Category[] = [];
+
   constructor(private service: ProductService){
 
   }
 
   ngOnInit(): void {
-    this.getAllCategory();
+    this.getCategories();
   }
 
-  getAllCategory(){
-    this.service.getCategory();
+  getCategories(){
+    this.service.getCategories().subscribe(categories => {
+      this.categoryList = categories;
+    })
   }
 
   onSidePanel(){

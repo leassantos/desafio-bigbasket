@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Constant } from '../constants/constant';
+import { Category } from '../../pages/admin/categories/domain/category';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,11 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
 
-  getAllProducts(){
+  getProducts(){
+
+  }
+
+  getProductById(){
 
   }
 
@@ -26,23 +33,7 @@ export class ProductService {
 
   }
 
-  getCategory(){
-    this.http.get('assets/categories.json').subscribe(data => {
-      console.log('Funcionaou: ' + data)
-    })
+  getCategories(): Observable<Category[]>{
+    return this.http.get<Category[]>(Constant.API_ENDPOINT+Constant.METHODS.GET_CATEGORIES);
   }
-}
-
-const CATEGORY_DATA: Category[] = [
-  {categoryId: 1, categoryName: '', parentCategoryId: 1},
-  {categoryId: 1, categoryName: '', parentCategoryId: 1},
-  {categoryId: 1, categoryName: '', parentCategoryId: 1},
-  {categoryId: 1, categoryName: '', parentCategoryId: 1},
-  {categoryId: 1, categoryName: '', parentCategoryId: 1},
-]
-
-export interface Category{
-  categoryId: number;
-  categoryName: string;
-  parentCategoryId: number;
 }

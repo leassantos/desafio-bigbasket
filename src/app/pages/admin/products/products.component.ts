@@ -30,12 +30,14 @@ export class ProductsComponent implements OnInit{
   };
 
   categoryList: Category[] = [];
+  productList: Product[] = [];
 
   constructor(private service: ProductService){
 
   }
 
   ngOnInit(): void {
+    this.getProducts();
     this.getCategories();
   }
 
@@ -45,11 +47,28 @@ export class ProductsComponent implements OnInit{
     })
   }
 
+  getProducts(){
+    this.service.getProducts().subscribe(products => {
+      this.productList = products;
+    })
+  }
+
   onSidePanel(){
     this.isSidePanelVisible = true;
   }
 
   closeSidePanel(){
     this.isSidePanelVisible = false;
+  }
+
+  createNewProduct(){
+    this.service.createNewProduct(this.product).subscribe(product => {
+      if(product){
+        alert("Product Created!");
+        this.getProducts();
+      }
+      else
+        alert("Product not created!");
+    })
   }
 }
